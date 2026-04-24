@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RO-.####",
+ "creation": "2026-03-18 17:29:03.769080",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "table",
+  "column_break_fzoc",
+  "grand_total",
+  "last_sales_invoice",
+  "current_order_section",
+  "table_odat",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "table",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Table",
+   "options": "Restaurant Table",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_fzoc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total"
+  },
+  {
+   "fieldname": "last_sales_invoice",
+   "fieldtype": "Link",
+   "label": "Last Sales Invoice",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "current_order_section",
+   "fieldtype": "Section Break",
+   "label": "Current Order"
+  },
+  {
+   "fieldname": "table_odat",
+   "fieldtype": "Table",
+   "options": "Restaurant Order Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Restaurant Order",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-03-18 17:37:06.586348",
+ "modified_by": "Administrator",
+ "module": "Hotelier",
+ "name": "Restaurant Order",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

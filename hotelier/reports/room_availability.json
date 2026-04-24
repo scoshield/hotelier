@@ -1,0 +1,6 @@
+{
+    "report_name": "Room Availability",
+    "is_standard": "No",
+    "ref_doctype": "Room",
+    "report_type": "Script Report"
+}

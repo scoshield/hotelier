@@ -1,0 +1,177 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RES-.{from_date}-.####",
+ "creation": "2026-03-18 13:57:17.326304",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_vt5t",
+  "guest_name",
+  "status",
+  "late_checkin",
+  "column_break_yjml",
+  "from_date",
+  "to_date",
+  "section_break_mzne",
+  "room_reservation",
+  "section_break_gcyv",
+  "items",
+  "amended_from",
+  "billing_section",
+  "column_break_lghg",
+  "column_break_inwg",
+  "column_break_jfdw",
+  "net_total",
+  "amount_paid",
+  "balance"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_vt5t",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Room Reservation",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "guest_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Guest Name",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To Date",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "late_checkin",
+   "fieldtype": "Check",
+   "label": "Late Checkin"
+  },
+  {
+   "fieldname": "column_break_yjml",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "New",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "New\nReserved\nBooked\nAdvance Paid\nInvoiced\nPaid\nCompleted\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gcyv",
+   "fieldtype": "Section Break",
+   "label": "Room Service & Extras"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Hotel Room Reservation Item"
+  },
+  {
+   "fieldname": "net_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total"
+  },
+  {
+   "fieldname": "section_break_mzne",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "room_reservation",
+   "fieldtype": "Table",
+   "label": "Room reservation",
+   "options": "Hotel Room Pricing Package",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing"
+  },
+  {
+   "fieldname": "column_break_inwg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jfdw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "balance",
+   "fieldtype": "Currency",
+   "label": "Balance",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_lghg",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-22 15:20:27.806024",
+ "modified_by": "Administrator",
+ "module": "Hotelier",
+ "name": "Room Reservation",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "guest_name",
+ "track_changes": 1
+}

@@ -4,6 +4,7 @@ app_publisher = "BluChip Technologies"
 app_description = "A hotel management system"
 app_email = "support@bluchip.co.ke"
 app_license = "mit"
+app_icon = "/assets/hotelier/hotelier.png"
 
 # Apps
 # ------------------
@@ -11,15 +12,15 @@ app_license = "mit"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "hotelier",
-# 		"logo": "/assets/hotelier/logo.png",
-# 		"title": "Hotelier",
-# 		"route": "/hotelier",
-# 		"has_permission": "hotelier.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+    {
+        "name": "hotelier",
+        "logo": "/assets/hotelier/hotelier.png",
+        "title": "Hotelier",
+        "route": "/desk/room-reservation",
+        # "has_permission": "hotelier.api.permission.has_app_permission"
+    }
+]
 
 # Includes in <head>
 # ------------------
@@ -132,6 +133,18 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
+doc_events = {
+    "Sales Invoice": {
+        "on_submit": "hotelier.events.sales_invoice.on_submit",
+        "on_cancel": "hotelier.events.sales_invoice.on_cancel",
+    },
+    "Folio": {
+        "before_submit": "hotelier.events.folio.validate_folio_before_submit",
+        "on_submit": "hotelier.events.folio.on_submit",
+        "on_cancel": "hotelier.events.folio.on_cancel",
+    },
+}
+
 # doc_events = {
 # 	"*": {
 # 		"on_update": "method",
@@ -139,6 +152,11 @@ app_license = "mit"
 # 		"on_trash": "method"
 # 	}
 # }
+
+
+report = {
+    "Room Availability": "hotel_management.reports.room_availability.room_availability"
+}
 
 # Scheduled Tasks
 # ---------------
@@ -249,4 +267,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

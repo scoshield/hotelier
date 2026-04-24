@@ -1,0 +1,20 @@
+{
+ "app": "hotelier",
+ "creation": "2026-03-21 15:36:58.845468",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon_type": "App",
+ "idx": 0,
+ "label": "Hotelier",
+ "link": "/desk/room-reservation",
+ "link_type": "External",
+ "logo_url": "/assets/hotelier/hotelier.png",
+ "modified": "2026-03-21 15:36:58.845468",
+ "modified_by": "Administrator",
+ "name": "Hotelier",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}

@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "HRT-.####",
+ "creation": "2026-03-18 13:34:29.054332",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "package_name",
+  "rate",
+  "column_break_hajl",
+  "hotel_room_type",
+  "amenities_section",
+  "table_sxjz"
+ ],
+ "fields": [
+  {
+   "fieldname": "hotel_room_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Hotel Room Type",
+   "options": "Room Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hajl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amenities_section",
+   "fieldtype": "Section Break",
+   "label": "Amenities"
+  },
+  {
+   "fieldname": "table_sxjz",
+   "fieldtype": "Table",
+   "label": "Amenities",
+   "options": "Room Amenity"
+  },
+  {
+   "fetch_from": "hotel_room_type.base_rate",
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Rate"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "package_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Package Name",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-21 17:52:39.320762",
+ "modified_by": "Administrator",
+ "module": "Hotelier",
+ "name": "Hotel Room Package",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
