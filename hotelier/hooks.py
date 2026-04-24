@@ -192,6 +192,8 @@ report = {
 # 	"Task": "hotelier.custom.task.CustomTaskMixin"
 # }
 
+fixtures = [ "Workspace Sidebar"]
+
 # Overriding Methods
 # ------------------------------
 #
