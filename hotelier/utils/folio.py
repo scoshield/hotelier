@@ -14,7 +14,8 @@ def add_invoice_to_folio(doc):
     )
 
     if not folio_name:
-        frappe.throw(f"No Open Folio found for customer {doc.customer}")
+        # frappe.throw(f"No Open Folio found for customer {doc.customer}")
+        return
 
     folio = frappe.get_doc("Folio", folio_name)
 
