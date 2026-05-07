@@ -5,7 +5,7 @@ from frappe.utils import now_datetime, flt
 def add_invoice_to_folio(doc):
     # 1. Check if the guest has an open reservation
     guest = frappe.db.get_value(
-        "Room Reservation", {"guest": doc.customer, "docstatus": 0}, "name"
+        "Room Reservation", {"guest_name": doc.customer, "docstatus": 0}, "name"
     )
 
     if not guest:
@@ -23,10 +23,10 @@ def add_invoice_to_folio(doc):
             {
                 "doctype": "Folio",
                 "guest": doc.customer,
-                "reservation": guest.name,
-                "total": doc.net_total,
-                "amount_paid": doc.amount_paid,
-                "balance": doc.balance,
+                "reservation": guest,
+                "total": doc.grand_total,
+                "amount_paid": doc.paid_amount,
+                "balance": doc.outstanding_amount,
                 "status": "Open",
                 "folio_type": "Guest",
             }
@@ -84,38 +84,69 @@ def add_invoice_to_folio(doc):
 #     return folio.name
 
 
-def update_folio_total(folio_name, doc):
-    # 1. Total from ledger (SOURCE OF TRUTH)
+def update_folio_total(folio_name):
+    """
+    Recalculate Folio totals safely from source records.
+    """
+
+    if not folio_name:
+        return
+
+    # ---------------------------------------------------
+    # 1. Calculate Folio Total from Folio Items
+    # ---------------------------------------------------
+
     total = flt(
         frappe.db.sql(
             """
-        SELECT SUM(amount)
-        FROM `tabFolio Item`
-        WHERE folio = %s
-    """,
-            folio_name,
+            SELECT COALESCE(SUM(amount), 0)
+            FROM `tabFolio Item`
+            WHERE folio = %s
+            """,
+            (folio_name,),
         )[0][0]
-        or 0
     )
 
-    if doc.paid_amount:
-        current_paid = frappe.db.get_value("Folio", folio_name, "amount_paid") or 0
+    # ---------------------------------------------------
+    # 2. Calculate Total Paid from Payment Entries
+    #    (SOURCE OF TRUTH FOR PAYMENTS)
+    # ---------------------------------------------------
 
-        frappe.db.set_value(
-            "Folio", folio_name, {"amount_paid": current_paid + doc.paid_amount}
-        )
+    amount_paid = flt(
+        frappe.db.sql(
+            """
+            SELECT COALESCE(SUM(paid_amount), 0)
+            FROM `tabFolio Payment`
+            WHERE folio = %s
+            AND docstatus = 0
+            """,
+            (folio_name,),
+        )[0][0]
+    )
 
-    # 2. Paid amount (from payments or manual updates)
-    amount_paid = flt(frappe.db.get_value("Folio", folio_name, "amount_paid") or 0)
+    # ---------------------------------------------------
+    # 3. Calculate Balance
+    # ---------------------------------------------------
 
-    # 3. Balance
     balance = total - amount_paid
 
+    # Prevent negative balance if overpaid
+    if balance < 0:
+        balance = 0
+
+    # ---------------------------------------------------
     # 4. Update Folio
+    # ---------------------------------------------------
+
     frappe.db.set_value(
         "Folio",
         folio_name,
-        {"total": total, "amount_paid": amount_paid, "balance": balance},
+        {
+            "total": total,
+            "amount_paid": amount_paid,
+            "balance": balance,
+        },
+        update_modified=False,
     )
 
 
@@ -136,7 +167,7 @@ def add_charge_to_folio(
     item_type="Other",
 ):
     # 🔹 Step 1: Find active folio using 'guest' field
-    folio_name = frappe.get_value("Folio", {"guest": guest, "docstatus": 1})
+    folio_name = frappe.get_value("Folio", {"guest": guest, "docstatus": 0})
 
     if not folio_name:
         frappe.log_error(f"No active folio for guest {guest}", "Folio Missing")
