@@ -8,10 +8,13 @@
  "field_order": [
   "enabled",
   "currency",
+  "column_break_frbl",
   "from_date",
   "to_date",
   "section_break_gbna",
-  "items"
+  "items",
+  "cost_of_booking_section",
+  "booking_amount"
  ],
  "fields": [
   {
@@ -52,12 +55,26 @@
    "label": "Items",
    "options": "Hotel Room Pricing Item",
    "reqd": 1
+  },
+  {
+   "fieldname": "cost_of_booking_section",
+   "fieldtype": "Section Break",
+   "label": "Cost of Booking"
+  },
+  {
+   "fieldname": "booking_amount",
+   "fieldtype": "Data",
+   "label": "Rate/Night"
+  },
+  {
+   "fieldname": "column_break_frbl",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-18 13:51:34.469101",
+ "modified": "2026-05-07 15:41:26.602643",
  "modified_by": "Administrator",
  "module": "Hotelier",
  "name": "Hotel Room Pricing",
