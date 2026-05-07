@@ -14,7 +14,11 @@
   "section_break_gbna",
   "items",
   "cost_of_booking_section",
-  "booking_amount"
+  "booking_amount",
+  "extras_section",
+  "min_stay",
+  "column_break_iuis",
+  "max_stay"
  ],
  "fields": [
   {
@@ -64,17 +68,38 @@
   {
    "fieldname": "booking_amount",
    "fieldtype": "Data",
-   "label": "Rate/Night"
+   "label": "Rate/Night",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_frbl",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "extras_section",
+   "fieldtype": "Section Break",
+   "label": "Extras"
+  },
+  {
+   "fieldname": "min_stay",
+   "fieldtype": "Data",
+   "label": "Min Stay",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_iuis",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "max_stay",
+   "fieldtype": "Data",
+   "label": "Max Stay"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-07 15:41:26.602643",
+ "modified": "2026-05-07 16:12:55.506127",
  "modified_by": "Administrator",
  "module": "Hotelier",
  "name": "Hotel Room Pricing",

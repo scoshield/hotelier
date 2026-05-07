@@ -86,18 +86,19 @@
   {
    "fieldname": "section_break_gcyv",
    "fieldtype": "Section Break",
-   "label": "Room Service & Extras"
+   "label": "Service & Extras"
   },
   {
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Items",
-   "options": "Hotel Room Reservation Item"
+   "options": "Hotel Room Pricing Item"
   },
   {
    "fieldname": "net_total",
    "fieldtype": "Currency",
-   "label": "Grand Total"
+   "label": "Net Total",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_mzne",
@@ -135,7 +136,8 @@
    "fieldname": "balance",
    "fieldtype": "Currency",
    "label": "Balance",
-   "non_negative": 1
+   "non_negative": 1,
+   "read_only": 1
   },
   {
    "fieldname": "column_break_lghg",
@@ -146,7 +148,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 15:20:27.806024",
+ "modified": "2026-05-07 19:11:34.512585",
  "modified_by": "Administrator",
  "module": "Hotelier",
  "name": "Room Reservation",

@@ -20,7 +20,7 @@ class RoomReservation(Document):
             self.create_folio_item(folio_name, item)
 
             # Optionally update the total in the folio
-            self.update_folio_total(folio_name, item)
+            # self.update_folio_total(folio_name, item)
 
         for item in getattr(
             self, "room_reservation", []
@@ -34,7 +34,7 @@ class RoomReservation(Document):
         """Return an existing open Folio for the guest or create a new one"""
         folio_name = frappe.db.get_value(
             "Folio",
-            filters={"guest": self.guest_name, "status": "Open"},
+            filters={"guest": self.guest_name, "docstatus": 0},
             fieldname="name",
         )
         if folio_name:
@@ -45,6 +45,9 @@ class RoomReservation(Document):
                 "doctype": "Folio",
                 "guest": self.guest_name,
                 "reservation": self.name,
+                "total": self.net_total,
+                "amount_paid": self.amount_paid,
+                "balance": self.balance,
                 "status": "Open",
                 "folio_type": "Guest",
             }
@@ -55,7 +58,7 @@ class RoomReservation(Document):
     def create_folio_item(self, folio_name, item):
         """Create a Folio Item linked to the Folio"""
         # Determine quantity: for rooms, use period; for other items, quantity field
-        quantity = flt(getattr(item, "period_of_stay", 0)) or flt(
+        quantity = flt(getattr(item, "quantity", 0)) or flt(
             getattr(item, "qty", 1)
         )
         rate = flt(getattr(item, "rate", 0))
@@ -133,7 +136,7 @@ class RoomReservation(Document):
         quantity = (
             flt(item.period_of_stay)
             if hasattr(item, "period_of_stay")
-            else flt(item.qty or 1)
+            else flt(item.quantity or 1)
         )
         rate = flt(item.rate or 0)
         total = quantity * rate
