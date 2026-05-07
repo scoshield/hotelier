@@ -29,6 +29,10 @@ add_to_apps_screen = [
 # app_include_css = "/assets/hotelier/css/hotelier.css"
 # app_include_js = "/assets/hotelier/js/hotelier.js"
 
+app_include_js = [
+    "https://cdnjs.cloudflare.com/ajax/libs/qz-tray/2.2.4/qz-tray.js"
+]
+
 # include js, css files in header of web template
 # web_include_css = "/assets/hotelier/css/hotelier.css"
 # web_include_js = "/assets/hotelier/js/hotelier.js"
