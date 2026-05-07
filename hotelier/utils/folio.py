@@ -31,8 +31,8 @@ def add_invoice_to_folio(doc):
                 "folio_type": "Guest",
             }
         )
-    folio.insert()
-    folio_name = folio.name
+        folio.insert()
+        folio_name = folio.name
 
     folio = frappe.get_doc("Folio", folio_name)
 
@@ -55,7 +55,7 @@ def add_invoice_to_folio(doc):
 
         folio_item.insert(ignore_permissions=True)
 
-    update_folio_total(folio_name, doc)
+    update_folio_total(folio_name)
 
 
 # def get_or_create_folio(doc):
@@ -112,17 +112,7 @@ def update_folio_total(folio_name):
     #    (SOURCE OF TRUTH FOR PAYMENTS)
     # ---------------------------------------------------
 
-    amount_paid = flt(
-        frappe.db.sql(
-            """
-            SELECT COALESCE(SUM(paid_amount), 0)
-            FROM `tabFolio Payment`
-            WHERE folio = %s
-            AND docstatus = 0
-            """,
-            (folio_name,),
-        )[0][0]
-    )
+    amount_paid = flt(frappe.db.get_value("Folio", folio_name, "amount_paid") or 0)
 
     # ---------------------------------------------------
     # 3. Calculate Balance
