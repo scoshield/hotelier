@@ -12,7 +12,8 @@
   "rate",
   "total_amount",
   "description",
-  "amended_from"
+  "amended_from",
+  "notes"
  ],
  "fields": [
   {
@@ -55,16 +56,22 @@
    "non_negative": 1
   },
   {
+   "fetch_from": "item.item_name",
    "fieldname": "description",
    "fieldtype": "Data",
    "label": "Description"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "Notes"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-08 02:08:03.912875",
+ "modified": "2026-05-08 07:32:01.553403",
  "modified_by": "Administrator",
  "module": "Hotelier",
  "name": "Hotel Room Pricing Item",
