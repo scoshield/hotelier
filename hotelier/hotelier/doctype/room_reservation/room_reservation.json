@@ -24,7 +24,12 @@
   "column_break_jfdw",
   "net_total",
   "amount_paid",
-  "balance"
+  "balance",
+  "payment_information_section",
+  "payment_method",
+  "column_break_dhri",
+  "reference",
+  "comments"
  ],
  "fields": [
   {
@@ -142,13 +147,38 @@
   {
    "fieldname": "column_break_lghg",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_information_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Information"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Link",
+   "label": "Payment Method",
+   "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "column_break_dhri",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Data",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Long Text",
+   "label": "Comments"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-07 19:11:34.512585",
+ "modified": "2026-05-18 13:38:10.128615",
  "modified_by": "Administrator",
  "module": "Hotelier",
  "name": "Room Reservation",
