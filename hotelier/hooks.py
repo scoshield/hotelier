@@ -196,7 +196,15 @@ report = {
 # 	"Task": "hotelier.custom.task.CustomTaskMixin"
 # }
 
-fixtures = [ "Workspace Sidebar"]
+# fixtures = [ "Workspace Sidebar"]
+fixtures = [
+    {
+        "dt": "Report",
+        "filters": [
+            ["report_name", "=", "Room Availability"]
+        ]
+    }
+]
 
 # Overriding Methods
 # ------------------------------
